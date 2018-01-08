@@ -90,8 +90,8 @@ public class GameController extends KeyAdapter {
 
         recorder = new Recorder();
 
-        this.brothersNumber = ground.getBrothers().length;
-        this.armyNumber = ground.getMonsters().length;
+        this.brothersNumber = ground.getBrothersNumber();
+        this.armyNumber = ground.getMonsterNumber();
         recorder.writeGround(ground.toString(), ground.getWidth(), ground.getHeight());
 
         gameState = GameState.RUNNING;
@@ -162,7 +162,7 @@ public class GameController extends KeyAdapter {
         }
         //访问目标位置前，先锁住
         synchronized(ground.getPositions()[x][y]) {
-            if (ground.getPositions()[x][y].getHolder() != null ) {
+            if (ground.getPositions()[x][y].getHolder() != null  && ground.getPositions()[x][y].getHolder().alive ) {
                 //该处已经有生物
                 return false;
             }
