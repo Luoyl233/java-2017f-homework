@@ -90,8 +90,8 @@ public class GameController extends KeyAdapter {
 
         recorder = new Recorder();
 
-        this.brothersNumber = ground.getBrothersNumber();
-        this.armyNumber = ground.getMonsterNumber();
+        this.brothersNumber = ground.getBrothers().length;
+        this.armyNumber = ground.getMonsters().length;
         recorder.writeGround(ground.toString(), ground.getWidth(), ground.getHeight());
 
         gameState = GameState.RUNNING;
